@@ -1,4 +1,4 @@
-package hello.core.singletone;
+package hello.core.singleton;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 class StatefulServiceTest {
 
     @Test
-    void statefulServiceSingletone() {
+    void statefulServiceSingleton() {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(TestConfig.class);
         StatefulService statefulService1 = ac.getBean(StatefulService.class);
         StatefulService statefulService2 = ac.getBean(StatefulService.class);
