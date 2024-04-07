@@ -2,6 +2,7 @@ package hello.core.scan.filter;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 
 import static org.assertj.core.api.Assertions.*;
@@ -11,7 +12,7 @@ class ComponentFilterAppConfigTest {
 
     @Test
     void filterScan() {
-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(ComponentFilterAppConfig.class);
+        ApplicationContext ac = new AnnotationConfigApplicationContext(ComponentFilterAppConfig.class);
         BeanA beanA = ac.getBean("beanA", BeanA.class);
         assertThat(beanA).isNotNull();
 
