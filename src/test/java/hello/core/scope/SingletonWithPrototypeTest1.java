@@ -3,13 +3,13 @@ package hello.core.scope;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.inject.Provider;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -46,10 +46,10 @@ class SingletonWithPrototypeTest1 {
 	@RequiredArgsConstructor
 	static class ClientBean {
 
-		private final ObjectProvider<PrototypeBean> prototypeBeanProvider;
+		private final Provider<PrototypeBean> prototypeBeanProvider;
 
 		public int logic() {
-			PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+			PrototypeBean prototypeBean = prototypeBeanProvider.get();
 			prototypeBean.addCount();
 			return prototypeBean.getCount();
 		}
